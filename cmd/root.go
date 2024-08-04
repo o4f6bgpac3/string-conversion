@@ -27,7 +27,8 @@ Currently supported output formats are:
 - binary
 - hex
 - morse
-- unicode`,
+- unicode
+- url-encoding`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if input == "" {
 			return fmt.Errorf("input string is required. Use --input or -i flag")
@@ -60,8 +61,10 @@ Currently supported output formats are:
 				f, err = format.NewMorse(input)
 			case "unicode":
 				f, err = format.NewUnicode(input)
+			case "url-encoding":
+				f, err = format.NewUrlEncoding(input)
 			default:
-				return fmt.Errorf("unsupported output format: %s. Supported formats are 'ascii', 'base64, 'binary', 'hex', 'morse' and 'unicode'", outputFormat)
+				return fmt.Errorf("unsupported output format: %s. Supported formats are 'ascii', 'base64, 'binary', 'hex', 'morse', 'unicode' and 'url-encoding", outputFormat)
 			}
 
 			if err != nil {
