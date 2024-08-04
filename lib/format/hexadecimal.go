@@ -9,7 +9,7 @@ type Hexadecimal struct {
 	input string
 }
 
-func NewHexadecimal(input string) (*Hexadecimal, error) {
+func NewHexadecimal(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")

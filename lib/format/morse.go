@@ -10,7 +10,7 @@ type Morse struct {
 	input string
 }
 
-func NewMorse(input string) (*Morse, error) {
+func NewMorse(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")

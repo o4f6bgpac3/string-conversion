@@ -9,7 +9,7 @@ type Unicode struct {
 	input string
 }
 
-func NewUnicode(input string) (*Unicode, error) {
+func NewUnicode(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")

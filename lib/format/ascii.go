@@ -9,7 +9,7 @@ type ASCII struct {
 	input string
 }
 
-func NewASCII(input string) (*ASCII, error) {
+func NewASCII(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")
@@ -23,10 +23,6 @@ func NewASCII(input string) (*ASCII, error) {
 func (f *ASCII) Convert() string {
 	var result string
 	for _, char := range f.input {
-		if char > 127 {
-			result += "N/A "
-			continue
-		}
 		result += fmt.Sprintf("%d ", char)
 	}
 

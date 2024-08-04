@@ -10,7 +10,7 @@ type Base64 struct {
 	input string
 }
 
-func NewBase64(input string) (*Base64, error) {
+func NewBase64(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")

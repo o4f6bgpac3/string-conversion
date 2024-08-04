@@ -10,7 +10,7 @@ type UrlEncoding struct {
 	input string
 }
 
-func NewUrlEncoding(input string) (*UrlEncoding, error) {
+func NewUrlEncoding(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")

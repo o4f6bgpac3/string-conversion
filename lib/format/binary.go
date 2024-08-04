@@ -9,7 +9,7 @@ type Binary struct {
 	input string
 }
 
-func NewBinary(input string) (*Binary, error) {
+func NewBinary(input string) (Format, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")
