@@ -24,3 +24,5 @@ func NewBase64(input string) (*Base64, error) {
 func (f *Base64) Convert() string {
 	return base64.StdEncoding.EncodeToString([]byte(f.input))
 }
+
+var _ Format = (*Base64)(nil)

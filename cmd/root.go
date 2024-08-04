@@ -22,6 +22,7 @@ var rootCmd = &cobra.Command{
 	Short: "Convert a string to one or more formats",
 	Long: `Convert a given input string to one or more specified output formats.
 Currently supported output formats are:
+- ascii
 - base64
 - binary
 - hex
@@ -42,11 +43,12 @@ Currently supported output formats are:
 
 		results := make(map[string]string)
 
+		var f format.Format
+		var err error
 		for _, outputFormat := range formatList {
-			var f format.Format
-			var err error
-
 			switch strings.ToLower(outputFormat) {
+			case "ascii":
+				f, err = format.NewASCII(input)
 			case "base64":
 				f, err = format.NewBase64(input)
 			case "binary":
@@ -56,7 +58,7 @@ Currently supported output formats are:
 			case "morse":
 				f, err = format.NewMorse(input)
 			default:
-				return fmt.Errorf("unsupported output format: %s. Supported formats are 'base64, 'binary', 'hex' and 'morse'", outputFormat)
+				return fmt.Errorf("unsupported output format: %s. Supported formats are 'ascii', 'base64, 'binary', 'hex' and 'morse'", outputFormat)
 			}
 
 			if err != nil {

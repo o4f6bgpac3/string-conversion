@@ -5,29 +5,28 @@ import (
 	"strings"
 )
 
-type Hexadecimal struct {
+type ASCII struct {
 	input string
 }
 
-func NewHexadecimal(input string) (*Hexadecimal, error) {
+func NewASCII(input string) (*ASCII, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")
 	}
 
-	return &Hexadecimal{
+	return &ASCII{
 		input: input,
 	}, nil
 }
 
-func (f *Hexadecimal) Convert() string {
+func (f *ASCII) Convert() string {
 	var result string
 	for _, char := range f.input {
-		hex := fmt.Sprintf("%x", char)
-		result += hex + " "
+		result += fmt.Sprintf("%d ", char)
 	}
 
 	return result
 }
 
-var _ Format = (*Hexadecimal)(nil)
+var _ Format = (*ASCII)(nil)
