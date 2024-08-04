@@ -5,32 +5,28 @@ import (
 	"strings"
 )
 
-type ASCII struct {
+type Unicode struct {
 	input string
 }
 
-func NewASCII(input string) (*ASCII, error) {
+func NewUnicode(input string) (*Unicode, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")
 	}
 
-	return &ASCII{
+	return &Unicode{
 		input: input,
 	}, nil
 }
 
-func (f *ASCII) Convert() string {
+func (f *Unicode) Convert() string {
 	var result string
 	for _, char := range f.input {
-		if char > 127 {
-			result += "N/A "
-			continue
-		}
-		result += fmt.Sprintf("%d ", char)
+		result += fmt.Sprintf("U+%04X ", char)
 	}
 
 	return result
 }
 
-var _ Format = (*ASCII)(nil)
+var _ Format = (*Unicode)(nil)
