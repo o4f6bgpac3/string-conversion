@@ -5,29 +5,27 @@ import (
 	"strings"
 )
 
-type Binary struct {
+type Hexadecimal struct {
 	input string
 }
 
-func NewBinary(input string) (*Binary, error) {
+func NewHexadecimal(input string) (*Hexadecimal, error) {
 	input = strings.TrimSpace(input)
 	if input == "" {
 		return nil, fmt.Errorf("input cannot be empty")
 	}
 
-	return &Binary{
+	return &Hexadecimal{
 		input: input,
 	}, nil
 }
 
-func (f *Binary) Convert() string {
+func (f *Hexadecimal) Convert() string {
 	var result string
 	for _, char := range f.input {
-		binary := fmt.Sprintf("%b", char)
-		result += binary + " "
+		hex := fmt.Sprintf("%x", char)
+		result += hex + " "
 	}
 
 	return result
 }
-
-var _ Format = (*Binary)(nil)

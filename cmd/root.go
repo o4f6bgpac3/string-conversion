@@ -23,7 +23,8 @@ var rootCmd = &cobra.Command{
 	Long: `Convert a given input string to one or more specified output formats.
 Currently supported output formats are:
 - morse
-- binary`,
+- binary
+- hex`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if input == "" {
 			return fmt.Errorf("input string is required. Use --input or -i flag")
@@ -49,8 +50,10 @@ Currently supported output formats are:
 				f, err = format.NewMorse(input)
 			case "binary":
 				f, err = format.NewBinary(input)
+			case "hex":
+				f, err = format.NewHexadecimal(input)
 			default:
-				return fmt.Errorf("unsupported output format: %s. Supported formats are 'morse' and 'binary'", outputFormat)
+				return fmt.Errorf("unsupported output format: %s. Supported formats are 'morse', 'binary' and 'hex'", outputFormat)
 			}
 
 			if err != nil {

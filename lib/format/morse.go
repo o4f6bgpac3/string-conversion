@@ -20,9 +20,9 @@ func NewMorse(input string) (*Morse, error) {
 	}, nil
 }
 
-func (m *Morse) Convert() string {
+func (f *Morse) Convert() string {
 	var result string
-	for _, char := range m.input {
+	for _, char := range f.input {
 		upperChar := strings.ToUpper(string(char))
 		if upperChar == " " {
 			result += " "
