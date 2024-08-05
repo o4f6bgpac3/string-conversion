@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package shared;
+
+option go_package = "github.com/o4f6bgpac3/string-conversion/gen/shared;shared";
+
+message Conversion {
+    string input = 1;
+    repeated Format formats = 2;
+
+    message Format {
+        string name = 1;
+        string value = 2;
+    }
+}

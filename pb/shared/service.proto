@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package shared;
+
+option go_package = "github.com/o4f6bgpac3/string-conversion/gen/shared;shared";
+
+import "shared/domain.proto";
+
+service StringConversionService {
+    rpc GetConversion (GetConversionRequest) returns (GetConversionResponse) {}
+}
+  
+message GetConversionRequest {
+  string input = 1;
+  repeated string formats = 2;
+}
+
+message GetConversionResponse {
+  Conversion conversion = 1;
+}

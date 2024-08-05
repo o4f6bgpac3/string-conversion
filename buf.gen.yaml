@@ -1,0 +1,17 @@
+version: v1
+plugins:
+  - plugin: go
+    out: gen
+    opt: paths=source_relative
+  - plugin: buf.build/connectrpc/go
+    out: gen
+    opt: paths=source_relative
+  - plugin: buf.build/bufbuild/es:v1.10.0
+    out: frontend/src/transport/client/gen
+    opt: target=ts
+  - plugin: buf.build/bufbuild/connect-es:v0.13.0
+    out: frontend/src/transport/client/gen
+    opt: target=ts
+  - plugin: buf.build/connectrpc/query-es:v1.4.1
+    out: frontend/src/transport/client/gen
+    opt: target=ts
